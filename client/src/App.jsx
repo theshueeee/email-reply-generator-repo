@@ -1,8 +1,14 @@
 import React from 'react'
+import { Input } from './components/input'
+import { Response } from './components/response'
+
 
 function App() {
   return (
-    <div>App</div>
+    <div>
+      <Input/>
+      <Response/>
+    </div>
   )
 }
 
