@@ -6,8 +6,8 @@ const [inputEmail, setInputEmail]=useState("");
 const [inputTone,setInputTone]=useState("");
 
 const onSubmitForm = (e)=>{
-  if (inputTone===""){
-    alert("Please pick a tone!")
+  if (inputTone==="" || inputEmail===""){
+    alert("Please enter email or select tone")
   }else{
   e.preventDefault();
   console.log(inputEmail, inputTone);
@@ -15,6 +15,7 @@ const onSubmitForm = (e)=>{
 }
 
 const toneOptions = ["Select Tone","Professional", "Friendly", "Funny", "Angry"];
+
   return(
     <div>
       <input placeholder="Enter Email" type="text" name="email-description" onChange={(e)=> setInputEmail(e.target.value)}/>
