@@ -13,7 +13,12 @@ if (!HF_ACCESS_TOKEN){
   process.exit(1)
 }
 
-export default inference;
+const hfObject = {
+  inference,
+  model
+};
+
+export default hfObject;
 
 
 
