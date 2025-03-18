@@ -1,15 +1,19 @@
-import hfObject from "./api";
+import hfObject from "./api.js";
 
-const generate = async (queryEmail,toneEmail)=>{ 
-  const response= await hfObject.inference.textGeneration({
+const generate = async (queryEmail, toneEmail) => { 
+  const response = await hfObject.hf.textGeneration({
     model: hfObject.model,
-    data: "Convert the following natural language into email with the respective tone /n/n ${queryEmail /n toneEmail}.",
-    parameters:{
-      max_tokens: 100,
-      temperature: 2,
-    }
+    inputs: `As a recipient, please generate a reply to the following email from sender. Do not paraphrase the original query; instead, respond appropriately based on the given tone.
+    /n/n
+    Email Query: ${queryEmail}  
+    /n
+    Tone: ${toneEmail}  
+    /n/n
+    Your response should be relevant, clear, and align with the specified tone.
+    `,
   });
-  return response.data.choices[0].text;
+
+  return response.generated_text;  // The API response structure has `generated_text`, not `.data.choices[0].text`
 };
 
 export default generate;

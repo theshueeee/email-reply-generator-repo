@@ -1,11 +1,11 @@
-import {HfInference} from "@huggingface/inference";
+import { InferenceClient } from "@huggingface/inference";
 import dotenv from "dotenv";
 
 dotenv.config();
 
 const HF_ACCESS_TOKEN = process.env.HUGGINGFACE_TOKEN;
-const inference = new HfInference(HF_ACCESS_TOKEN);
-const model = "deepseek-ai/DeepSeek-R1";
+const hf = new InferenceClient(HF_ACCESS_TOKEN);
+const model = "mistralai/Mistral-7B-Instruct-v0.2";
 
 
 if (!HF_ACCESS_TOKEN){
@@ -14,7 +14,7 @@ if (!HF_ACCESS_TOKEN){
 }
 
 const hfObject = {
-  inference,
+  hf,
   model
 };
 

@@ -1,9 +1,10 @@
 import express from "express"
 import cors from "cors"
+import generate from "./generate.js";
 
 const app = express();
-app.use(cors(
-));
+app.use(cors());
+app.use(express.json());
 
 const port = process.env.PORT || 3005;
 
@@ -11,14 +12,21 @@ app.get("/", (req,res) =>{
   res.send("Server successfully created")
 });
 
-app.post("/generate", (req,res) =>{
+app.post("/generate", async (req,res) =>{
     const queryEmail = req.body.queryEmail;
     const toneEmail = req.body.toneEmail;
-    console.log("Input:",queryEmail,toneEmail);
-    res.json({response:"You sent this: ${queryEmail} and ${toneEmail}"});
+    try{
+      const generatedEmail = await generate(queryEmail,toneEmail);
+      res.json ({
+        response: generatedEmail
+      });
+    } catch(err){
+      console.error(err);
+      res.status(500).send("Internal Server Error")
+    }
 });
 
 
 app.listen(port, ()=>{
-  console.log("Listening on port ${port}")
+  console.log(`Listening on port ${port}`)
 });
