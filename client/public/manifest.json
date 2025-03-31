@@ -1,0 +1,17 @@
+{
+  "name": "Email Reply Generator",
+  "version": "1.0.0",
+  "description": "Generate replies for your emails",
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://outlook.live.com/*",
+    "https://outlook.office.com/*",
+    "https://mail.yahoo.com/*"
+  ],
+  "action": {
+    "default_title": "Email Reply Generator",
+    "default_popup": "index.html"
+  },
+  "manifest_version": 3
+}
