@@ -15,7 +15,7 @@ const generate = async (queryEmail, toneEmail) => {
     - A closing (e.g., "Best regards," or "Sincerely,")
     - A signature line with your name and any relevant contact information
     
-    Ensure the final reply is relevant, clear, and aligns with the specified tone. Do not repeat this input I am giving in your response.
+    Ensure the final reply is relevant, clear, and aligns with the specified tone.
     `,
   });
 
